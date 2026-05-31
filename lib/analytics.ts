@@ -1,8 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
+import type { UtmFields } from "./buildCtaUrl";
 
-type Params = Record<string, string | number | boolean | undefined>;
+type Params = Record<
+  string,
+  string | number | boolean | undefined | null | UtmFields
+>;
 
 declare global {
   interface Window {
@@ -21,6 +25,20 @@ export function trackEvent(name: string, params: Params = {}) {
   }
 }
 
+export function trackCtaClick(args: {
+  placement: string;
+  target: string;
+  ctaUrl: string;
+  utm: UtmFields;
+}) {
+  trackEvent("cta_click", {
+    placement: args.placement,
+    target: args.target,
+    ctaUrl: args.ctaUrl,
+    utm: args.utm,
+  });
+}
+
 export function useImpression(id: string, label: string) {
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -35,7 +53,7 @@ export function useImpression(id: string, label: string) {
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
     obs.observe(el);
     return () => obs.disconnect();
