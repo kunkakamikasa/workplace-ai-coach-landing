@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback } from "react";
 import { trackCtaClick, useImpression } from "@/lib/analytics";
 import type { UtmFields } from "@/lib/buildCtaUrl";
@@ -71,6 +72,17 @@ export default function Landing({ ctaUrl, utm }: Props) {
               See it in action
             </a>
           </div>
+          <div className="mt-8 relative overflow-hidden rounded-3xl glass mx-auto max-w-[320px]">
+            <Image
+              src="/hero_chat_workflow_portrait.png"
+              alt="Paste a workplace message, see an amber risk label on the risky phrase, then get a calmer suggested reply"
+              width={1024}
+              height={1536}
+              priority
+              sizes="(max-width: 768px) 100vw, 320px"
+              className="w-full h-auto object-cover"
+            />
+          </div>
         </div>
       </section>
 
@@ -138,6 +150,17 @@ export default function Landing({ ctaUrl, utm }: Props) {
           </p>
           <h2 className="text-2xl font-semibold">{DEMO_SECTION.title}</h2>
           <p className="text-sm text-slate-300 mt-2">{DEMO_SECTION.subtitle}</p>
+
+          <div className="mt-5 relative overflow-hidden rounded-3xl glass mx-auto max-w-[360px]">
+            <Image
+              src="/risk_label_reply_options_card.png"
+              alt="A workplace draft with an amber risk label flagging blunt tone, shown next to calmer reply options"
+              width={1024}
+              height={1536}
+              sizes="(max-width: 768px) 100vw, 360px"
+              className="w-full h-auto object-cover"
+            />
+          </div>
 
           <div className="glass rounded-2xl p-5 mt-5">
             <p className="text-xs uppercase text-slate-400 mb-2">Your draft</p>
@@ -228,6 +251,17 @@ export default function Landing({ ctaUrl, utm }: Props) {
             {ROLEPLAY_SECTION.subtitle}
           </p>
 
+          <div className="mt-5 relative overflow-hidden rounded-3xl glass mx-auto max-w-[320px]">
+            <Image
+              src="/roleplay_rehearsal_module_portrait.png"
+              alt="Rehearsing a tough workplace conversation with the coach playing the other side, turn by turn"
+              width={1024}
+              height={1536}
+              sizes="(max-width: 768px) 100vw, 320px"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+
           <div className="grid gap-3 mt-5">
             {ROLEPLAY_SECTION.scenarios.map((s) => (
               <div key={s.title} className="glass rounded-2xl p-4">
@@ -259,6 +293,16 @@ export default function Landing({ ctaUrl, utm }: Props) {
             Drafts stay on-device by default. Nothing is shared with your
             employer.
           </p>
+          <div className="mt-5 relative overflow-hidden rounded-3xl glass">
+            <Image
+              src="/trust_privacy_note_landscape.png"
+              alt="A privacy note explaining drafts stay on-device by default and nothing is shared with your employer"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 768px) 100vw, 720px"
+              className="w-full h-auto object-cover"
+            />
+          </div>
         </div>
       </section>
 
